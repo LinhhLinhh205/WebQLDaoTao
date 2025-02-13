@@ -81,16 +81,16 @@
         </div>
     </div>
     <asp:Panel ID="Panel1" runat="server" ScrollBars="Both">
-    <asp:GridView ID="gvSinhVien" runat="server" CssClass="table table-bordered table-hover" EmptyDataRowStyle-Wrap="true" AutoGenerateColumns="False" DataSourceID="ods_SinhVien">
+    <asp:GridView ID="gvSinhVien" DataKeyNames="Masv"  runat="server" CssClass="table table-bordered table-hover" EmptyDataRowStyle-Wrap="true" AutoGenerateColumns="False" DataSourceID="ods_SinhVien" OnPageIndexChanging="gvSinhVien_PageIndexChanging" AllowPaging="true" PageSize="10">
         <Columns>
-            <asp:BoundField DataField="MaSV" HeaderText="MaSV" SortExpression="MaSV" ReadOnly="true" />
-            <asp:BoundField DataField="HoSV" HeaderText="HoSV" SortExpression="HoSV" />
-            <asp:BoundField DataField="TenSV" HeaderText="TenSV" SortExpression="TenSV" />
-            <asp:CheckBoxField DataField="GioiTinh" HeaderText="GioiTinh" SortExpression="GioiTinh" />
-            <asp:BoundField DataField="NgaySinh" HeaderText="NgaySinh" SortExpression="NgaySinh" />
-            <asp:BoundField DataField="NoiSinh" HeaderText="NoiSinh" SortExpression="NoiSinh" />
-            <asp:BoundField DataField="DiaChi" HeaderText="DiaChi" SortExpression="DiaChi" />
-            <asp:BoundField DataField="MaKH" HeaderText="MaKH" SortExpression="MaKH" />
+            <asp:BoundField DataField="MaSV" HeaderText="Mã SV" SortExpression="MaSV" ReadOnly="true" />
+            <asp:BoundField DataField="HoSV" HeaderText="Họ SV" SortExpression="HoSV" />
+            <asp:BoundField DataField="TenSV" HeaderText="Tên SV" SortExpression="TenSV" />
+            <asp:CheckBoxField DataField="GioiTinh" HeaderText="Giới tính" SortExpression="GioiTinh" />
+            <asp:BoundField DataField="NgaySinh" HeaderText="Ngày sinh" SortExpression="NgaySinh" DataFormatString="{0:dd/MM/yyyy}"/>
+            <asp:BoundField DataField="NoiSinh" HeaderText="Nơi sinh" SortExpression="NoiSinh" />
+            <asp:BoundField DataField="DiaChi" HeaderText="Đại chỉ" SortExpression="DiaChi" />
+            <asp:BoundField DataField="MaKH" HeaderText="Mã khoa" SortExpression="MaKH" />
             <asp:CommandField ButtonType="Button" HeaderText="Chọn tác vụ" ShowDeleteButton="True" ShowEditButton="True" ItemStyle-Wrap="false" />
         </Columns>
     </asp:GridView>

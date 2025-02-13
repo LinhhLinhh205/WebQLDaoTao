@@ -10,7 +10,6 @@ namespace WebQLDaoTao
 {
     public partial class QLSinhVien : System.Web.UI.Page
     {
-        KhoaDAO khDao = new KhoaDAO();
         SinhVienDAO svDao = new SinhVienDAO();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,6 +31,11 @@ namespace WebQLDaoTao
             svDao.Insert(masv, hosv, tensv, gioitinh, ngaysinh, noisinh, diachi, makh);
             gvSinhVien.DataSource = svDao.getAll();
             gvSinhVien.DataBind();
+        }
+
+        protected void gvSinhVien_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
         }
     }
 }
