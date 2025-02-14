@@ -13,29 +13,43 @@ namespace WebQLDaoTao
         SinhVienDAO svDao = new SinhVienDAO();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void btThem_Click(object sender, EventArgs e)
         {
-            string masv = txtMaSV.Text;
-            string hosv = txtMaSV.Text;
-            string tensv = txtTenSV.Text;
-            Boolean gioitinh = rdNam.Checked ? true : false;
-            DateTime ngaysinh = DateTime.Parse(txtNgaysinh.Text);
-            string noisinh = txtNoiSinh.Text;
-            string diachi = txtDiaChi.Text;
+            try
+            {
+                string masv = txtMaSV.Text;
+               
+                if (svDao.findById(masv) != null)
+                {
+                    Response.Write("<script>alert('Mã sinh viên đã tồn tại. Chọn mã khác nhé.')</script>");
+                    return;
+                }
+                string hosv = txtMaSV.Text;
+                string tensv = txtTenSV.Text;
+                Boolean gioitinh = rdNam.Checked ? true : false;
+                DateTime ngaysinh = DateTime.Parse(txtNgaysinh.Text);
+                string noisinh = txtNoiSinh.Text;
+                string diachi = txtDiaChi.Text;
 
-            string makh = ddlMaKhoa.SelectedValue;
-            //them sinh vien vao CSDL
-            svDao.Insert(masv, hosv, tensv, gioitinh, ngaysinh, noisinh, diachi, makh);
+                string makh = ddlMaKhoa.SelectedValue;
+                SinhVien mhInsert = new SinhVien { MaSV = masv, HoSV = hosv, TenSV = tensv,GioiTinh=gioitinh,NgaySinh=ngaysinh,NoiSinh=noisinh,DiaChi=diachi,MaKH=makh };
+                svDao.Insert(mhInsert);
+            }
+            catch (Exception)
+            {
+                Response.Write("<script>alert('Thao tác thêm môn học không thành công.')</script>");
+            }
+            //liên kết dữ liệu cho gvMonHoc
             gvSinhVien.DataSource = svDao.getAll();
             gvSinhVien.DataBind();
         }
 
         protected void gvSinhVien_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            
         }
     }
 }

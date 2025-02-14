@@ -84,30 +84,30 @@
     <asp:GridView ID="gvSinhVien" DataKeyNames="Masv"  runat="server" CssClass="table table-bordered table-hover" EmptyDataRowStyle-Wrap="true" AutoGenerateColumns="False" DataSourceID="ods_SinhVien" OnPageIndexChanging="gvSinhVien_PageIndexChanging" AllowPaging="true" PageSize="10">
         <Columns>
             <asp:BoundField DataField="MaSV" HeaderText="Mã SV" SortExpression="MaSV" ReadOnly="true" />
-            <asp:BoundField DataField="HoSV" HeaderText="Họ SV" SortExpression="HoSV" />
+            <asp:BoundField DataField="HoSV" HeaderText="Họ SV" SortExpression="HoSV" ControlStyle-Width="150px" >
+            <ControlStyle Width="150px" />
+            </asp:BoundField>
             <asp:BoundField DataField="TenSV" HeaderText="Tên SV" SortExpression="TenSV" />
             <asp:CheckBoxField DataField="GioiTinh" HeaderText="Giới tính" SortExpression="GioiTinh" />
             <asp:BoundField DataField="NgaySinh" HeaderText="Ngày sinh" SortExpression="NgaySinh" DataFormatString="{0:dd/MM/yyyy}"/>
             <asp:BoundField DataField="NoiSinh" HeaderText="Nơi sinh" SortExpression="NoiSinh" />
             <asp:BoundField DataField="DiaChi" HeaderText="Đại chỉ" SortExpression="DiaChi" />
-            <asp:BoundField DataField="MaKH" HeaderText="Mã khoa" SortExpression="MaKH" />
-            <asp:CommandField ButtonType="Button" HeaderText="Chọn tác vụ" ShowDeleteButton="True" ShowEditButton="True" ItemStyle-Wrap="false" />
+            <asp:TemplateField >
+                <EditItemTemplate>
+
+                </EditItemTemplate>
+                <ItemTemplate>
+
+                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("MaKH") %>'></asp:Label>
+
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:CommandField ButtonType="Image" HeaderText="Chọn tác vụ" ShowDeleteButton="True" ShowEditButton="True" ItemStyle-Wrap="false" >
+            <ItemStyle Wrap="False" />
+            </asp:CommandField>
         </Columns>
+        <EmptyDataRowStyle Wrap="True" />
     </asp:GridView>
         </asp:Panel>
-    <asp:ObjectDataSource ID="ods_SinhVien" runat="server"  DeleteMethod="Delete" InsertMethod="Insert" SelectMethod="getAll" TypeName="WebQLDaoTao.Models.SinhVienDAO">
-        <DeleteParameters>
-            <asp:Parameter Name="masv" Type="String" />
-        </DeleteParameters>
-        <InsertParameters>
-            <asp:Parameter Name="masv" Type="String" />
-            <asp:Parameter Name="hosv" Type="String" />
-            <asp:Parameter Name="tensv" Type="String" />
-            <asp:Parameter Name="gioitinh" Type="Boolean" />
-            <asp:Parameter Name="ngaysinh" Type="DateTime" />
-            <asp:Parameter Name="noisinh" Type="String" />
-            <asp:Parameter Name="diachi" Type="String" />
-            <asp:Parameter Name="makh" Type="String" />
-        </InsertParameters>
-    </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="ods_SinhVien" SelectMethod="getAll" TypeName="WebQLDaoTao.Models.SinhVienDAO"  runat="server"></asp:ObjectDataSource>
 </asp:Content>
