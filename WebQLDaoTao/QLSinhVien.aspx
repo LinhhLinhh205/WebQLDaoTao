@@ -88,18 +88,25 @@
             <ControlStyle Width="150px" />
             </asp:BoundField>
             <asp:BoundField DataField="TenSV" HeaderText="Tên SV" SortExpression="TenSV" />
-            <asp:CheckBoxField DataField="GioiTinh" HeaderText="Giới tính" SortExpression="GioiTinh" />
+            <asp:TemplateField>
+                <EditItemTemplate>
+                    <asp:CheckBox ID="gioitinh" runat="server" Checked='<% Bind("gioitinh") %>' />
+                </EditItemTemplate>
+                <ItemTemplate>
+                    <%# (bool)Eval("gioitinh")?"Nam":"Nu" %>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField="NgaySinh" HeaderText="Ngày sinh" SortExpression="NgaySinh" DataFormatString="{0:dd/MM/yyyy}"/>
             <asp:BoundField DataField="NoiSinh" HeaderText="Nơi sinh" SortExpression="NoiSinh" />
             <asp:BoundField DataField="DiaChi" HeaderText="Đại chỉ" SortExpression="DiaChi" />
-            <asp:TemplateField >
+            <asp:TemplateField HeaderText="Khoa">
                 <EditItemTemplate>
+                    <asp:DropDownList ID="makh" runat="server" DataSourceID="ods_Khoa" DataTextField="TenKH" DataValueField="MaKH" SelectedValue='<%# Bind("MaKH") %>'>
 
+                    </asp:DropDownList>
                 </EditItemTemplate>
-                <ItemTemplate>
-
-                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("MaKH") %>'></asp:Label>
-
+                <ItemTemplate>                    
+                    <%# Eval("Makh") %>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:CommandField ButtonType="Image" HeaderText="Chọn tác vụ" ShowDeleteButton="True" ShowEditButton="True" ItemStyle-Wrap="false" >
