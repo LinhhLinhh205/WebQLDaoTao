@@ -83,17 +83,17 @@
     <asp:Panel ID="Panel1" runat="server" ScrollBars="Both">
     <asp:GridView ID="gvSinhVien" DataKeyNames="Masv"  runat="server" CssClass="table table-bordered table-hover" EmptyDataRowStyle-Wrap="true" AutoGenerateColumns="False" DataSourceID="ods_SinhVien" OnPageIndexChanging="gvSinhVien_PageIndexChanging" AllowPaging="true" PageSize="10">
         <Columns>
-            <asp:BoundField DataField="MaSV" HeaderText="Mã SV" SortExpression="MaSV" ReadOnly="true" />
+            <asp:BoundField DataField="MaSV" HeaderText="Mã SV" SortExpression="MaSV" ReadOnly="true" ControlStyle-Width="70px" />
             <asp:BoundField DataField="HoSV" HeaderText="Họ SV" SortExpression="HoSV" ControlStyle-Width="150px" >
             <ControlStyle Width="150px" />
             </asp:BoundField>
             <asp:BoundField DataField="TenSV" HeaderText="Tên SV" SortExpression="TenSV" />
-            <asp:TemplateField>
+            <asp:TemplateField HeaderText="Phái">
                 <EditItemTemplate>
-                    <asp:CheckBox ID="gioitinh" runat="server" Checked='<% Bind("gioitinh") %>' />
+                    <asp:CheckBox ID="gioitinh" runat="server" Checked='<%# Bind("gioitinh") %>' />
                 </EditItemTemplate>
                 <ItemTemplate>
-                    <%# (bool)Eval("gioitinh")?"Nam":"Nu" %>
+                    <%# (bool)Eval("gioitinh")?"Nam":"Nữ" %>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="NgaySinh" HeaderText="Ngày sinh" SortExpression="NgaySinh" DataFormatString="{0:dd/MM/yyyy}"/>
