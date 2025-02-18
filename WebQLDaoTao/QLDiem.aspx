@@ -12,35 +12,26 @@
         <div class="form-group">
             <label class="control-label col-sm-2">Chọn môn học</label>
             <div class="col-md-2">
-                <asp:DropDownList ID="ddlMonHoc" AutoPostBack="true" runat="server" CssClass="form-control">
+                <asp:DropDownList ID="ddlMonHoc" AutoPostBack="true" runat="server" CssClass="form-control" DataSourceID="ods_Monhoc" DataTextField="TenMH" DataValueField="MaMH">
                 </asp:DropDownList>
             </div>
         </div>
     </div>
     <hr />
-    <asp:GridView ID="gvKetQua" ShowFooter="true" DataKeyNames="id" runat="server" OnSelectedIndexChanged="gvKetQua_SelectedIndexChanged"
+    <asp:GridView ID="gvKetQua" ShowFooter="true" DataKeyNames="Id" runat="server" DataSourceID="ods_KetQua"
         AutoGenerateColumns="false" CssClass="table table-bordered" Width="100%">
         <Columns>
             <asp:BoundField DataField="masv" HeaderText="Mã sinh viên" />
             <asp:BoundField DataField="hotensv" HeaderText="Họ tên sinh viên" />
             <asp:TemplateField HeaderText="Điểm">
                 <ItemTemplate>
-
-                    <asp:TextBox ID="txtDiem" runat="server" Text='<%# Eval("diem") %>' CssClass="form-control"></asp:TextBox>
-                    <asp:RangeValidator ID="rvDiem" runat="server" ControlToValidate="txtDiem" MinimumValue="0" MaximumValue="10" Type="Integer" CssClass="text-danger" Display="Dynamic" ErrorMessag="Điểm không hợp lệ"></asp:RangeValidator>
+                    <asp:TextBox ID="txtDiem" runat="server" Text='<%# Eval("diem") %>' CssClass="form-control"></asp:TextBox>                    
                 </ItemTemplate>
                 <FooterTemplate>
                     <asp:Button ID="btLuu" runat="server" Text="Lưu điểm" OnClick="btLuu_Click" CssClass="btn btn-success" />
                 </FooterTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Chọn">
-                <ItemTemplate>
-                    <asp:CheckBox ID="chkChon" runat="server" CssClass="radio-inline" />
-                </ItemTemplate>
-                <FooterTemplate>
-                    <asp:Button ID="btXoa" runat="server" Text="Xóa" CssClass="btn btn-danger" />
-                </FooterTemplate>
-            </asp:TemplateField>
+            </asp:TemplateField>          
         </Columns>
     </asp:GridView>
+    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server"></asp:ObjectDataSource>
 </asp:Content>

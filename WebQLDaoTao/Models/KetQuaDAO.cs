@@ -29,15 +29,6 @@ namespace WebQLDaoTao.Models
 			}
 			return dsKetQua;
 
-		}
-		public int Update(int Id,float diem)
-		{
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["WebQLDaoTao_ConStr"].ConnectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("Update KetQua set diem=@diem where id=@id", conn);
-            cmd.Parameters.AddWithValue("@id", Id);
-            cmd.Parameters.AddWithValue("@diem", diem);
-			return cmd.ExecuteNonQuery();
-        }
+		}		
 	}
 }
