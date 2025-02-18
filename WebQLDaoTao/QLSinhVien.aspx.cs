@@ -25,6 +25,7 @@ namespace WebQLDaoTao
                 if (svDao.findById(masv) != null)
                 {
                     Response.Write("<script>alert('Mã sinh viên đã tồn tại. Chọn mã khác nhé.')</script>");
+
                     return;
                 }
                 string hosv = txtHoSv.Text;
