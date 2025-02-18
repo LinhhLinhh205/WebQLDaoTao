@@ -27,7 +27,7 @@ namespace WebQLDaoTao
                     Response.Write("<script>alert('Mã sinh viên đã tồn tại. Chọn mã khác nhé.')</script>");
                     return;
                 }
-                string hosv = txtMaSV.Text;
+                string hosv = txtHoSv.Text;
                 string tensv = txtTenSV.Text;
                 Boolean gioitinh = rdNam.Checked ? true : false;
                 DateTime ngaysinh = DateTime.Parse(txtNgaysinh.Text);
@@ -42,8 +42,6 @@ namespace WebQLDaoTao
             {
                 Response.Write("<script>alert('Thao tác thêm môn học không thành công.')</script>");
             }
-            //liên kết dữ liệu cho gvMonHoc
-            gvSinhVien.DataSource = svDao.getAll();
             gvSinhVien.DataBind();
         }
 

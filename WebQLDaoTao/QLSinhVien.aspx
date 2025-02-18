@@ -63,7 +63,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-2">Chọn khoa</label>
                                 <div class="col-md-4">
-                                    <asp:DropDownList ID="ddlMaKhoa" runat="server" CssClass="form-control"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlMaKhoa" runat="server" CssClass="form-control" DataSourceID="ods_Khoa" DataTextField="tenkh" DataValueField="makh"></asp:DropDownList>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -101,7 +101,7 @@
             <asp:BoundField DataField="DiaChi" HeaderText="Đại chỉ" SortExpression="DiaChi" />
             <asp:TemplateField HeaderText="Khoa">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="makh" runat="server" DataSourceID="ods_Khoa" DataTextField="TenKH" DataValueField="MaKH" SelectedValue='<%# Bind("MaKH") %>'>
+                    <asp:DropDownList ID="makh" runat="server" DataSourceID="ods_Khoa" DataTextField="tenkh" DataValueField="MaKH" SelectedValue='<%# Bind("MaKH") %>'>
 
                     </asp:DropDownList>
                 </EditItemTemplate>
@@ -116,5 +116,6 @@
         <EmptyDataRowStyle Wrap="True" />
     </asp:GridView>
         </asp:Panel>
-    <asp:ObjectDataSource ID="ods_SinhVien" SelectMethod="getAll" TypeName="WebQLDaoTao.Models.SinhVienDAO"  runat="server"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="ods_SinhVien" SelectMethod="getAll" TypeName="WebQLDaoTao.Models.SinhVienDAO" DeleteMethod="Delete" UpdateMethod="Update"  runat="server"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="ods_Khoa" runat="server" SelectMethod="getAll" TypeName="WebQLDaoTao.Models.KhoaDAO" ></asp:ObjectDataSource>
 </asp:Content>
