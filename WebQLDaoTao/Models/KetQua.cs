@@ -10,7 +10,7 @@ namespace WebQLDaoTao.Models
 		public int Id { set; get; }
 		public string MaSV { set; get; }
 		public string MaMH { set; get; }
-		public float Diem { set; get; }
+		public double? Diem { set; get; }
 		public string HoTenSV { set; get; }
 	}
 }

@@ -11,8 +11,8 @@
     <div class="form-horizontal">
         <div class="form-group">
             <label class="control-label col-sm-2">Chọn môn học</label>
-            <div class="col-md-2">
-                <asp:DropDownList ID="ddlMonHoc" AutoPostBack="true" runat="server" CssClass="form-control" DataSourceID="ods_Monhoc" DataTextField="TenMH" DataValueField="MaMH">
+            <div class="col-md-2" style="padding:10px;">
+                <asp:DropDownList ID="ddlMonHoc" AutoPostBack="true" runat="server" CssClass="form-control" DataSourceID="ods_MonHoc" DataTextField="TenMH" DataValueField="MaMH">
                 </asp:DropDownList>
             </div>
         </div>
@@ -21,17 +21,20 @@
     <asp:GridView ID="gvKetQua" ShowFooter="true" DataKeyNames="Id" runat="server" DataSourceID="ods_KetQua"
         AutoGenerateColumns="false" CssClass="table table-bordered" Width="100%">
         <Columns>
-            <asp:BoundField DataField="masv" HeaderText="Mã sinh viên" />
-            <asp:BoundField DataField="hotensv" HeaderText="Họ tên sinh viên" />
+            <asp:BoundField DataField="masv" HeaderText="Mã sinh viên" SortExpression="MaSV" />
+            <asp:BoundField DataField="hotensv" HeaderText="Họ tên sinh viên" />       
             <asp:TemplateField HeaderText="Điểm">
                 <ItemTemplate>
                     <asp:TextBox ID="txtDiem" runat="server" Text='<%# Eval("diem") %>' CssClass="form-control"></asp:TextBox>                    
                 </ItemTemplate>
-                <FooterTemplate>
-                    <asp:Button ID="btLuu" runat="server" Text="Lưu điểm" OnClick="btLuu_Click" CssClass="btn btn-success" />
-                </FooterTemplate>
             </asp:TemplateField>          
         </Columns>
     </asp:GridView>
-    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server"></asp:ObjectDataSource>
+    <asp:Button ID="btLuu" runat="server" Text="Lưu" CssClass="btn btn-danger" OnClick="btLuu_Click" />
+    <asp:ObjectDataSource ID="ods_KetQua" runat="server" SelectMethod="getByMaMH" TypeName="WebQLDaoTao.Models.KetQuaDAO" >
+        <SelectParameters>
+            <asp:ControlParameter ControlID="ddlMonHoc" Name="mamh" PropertyName="SelectedValue" Type="String" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="ods_MonHoc" runat="server" TypeName="WebQLDaoTao.Models.MonHocDAO" SelectMethod="getAll" ></asp:ObjectDataSource>
 </asp:Content>
