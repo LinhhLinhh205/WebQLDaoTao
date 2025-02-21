@@ -10,7 +10,7 @@
     <hr />
     <div class="form-horizontal">
         <div class="form-group">
-            <label class="control-label col-sm-2">Chọn môn học</label>
+            <label class="control-label col-sm-3">Chọn môn học</label>
             <div class="col-md-2" style="padding:10px;">
                 <asp:DropDownList ID="ddlMonHoc" AutoPostBack="true" runat="server" CssClass="form-control" DataSourceID="ods_MonHoc" DataTextField="TenMH" DataValueField="MaMH">
                 </asp:DropDownList>
@@ -27,10 +27,29 @@
                 <ItemTemplate>
                     <asp:TextBox ID="txtDiem" runat="server" Text='<%# Eval("diem") %>' CssClass="form-control"></asp:TextBox>                    
                 </ItemTemplate>
-            </asp:TemplateField>          
+                
+                <FooterTemplate>
+                        <br />
+                        <asp:Button ID="btLuu" runat="server" Text="Lưu" CssClass="btn btn-primary" OnClick="btLuu_Click" />
+                </FooterTemplate>
+            </asp:TemplateField>  
+            <asp:TemplateField  ItemStyle-HorizontalAlign="Center">
+                <ItemTemplate>
+                    <asp:CheckBox ID="chkChon" runat="server" />
+                </ItemTemplate>
+                <FooterTemplate>                   
+                    <asp:CheckBox ID="chkAll" runat="server" Text="Chọn tất cả" AutoPostBack="true" OnCheckedChanged="chkAll_CheckedChanged" />
+                    <br />
+                    <asp:Button ID="btnXoa" runat="server" Text="Xoá" CssClass="btn btn-danger" OnClientClick="return confirm('Bạn chắc chắn muốn xoá?')" OnClick="btnXoa_Click" />                  
+                </FooterTemplate>
+            </asp:TemplateField>
         </Columns>
+        <EmptyDataTemplate>
+            <div class="alert alert-warning">
+                Không có sinh viên nào!
+            </div>
+        </EmptyDataTemplate>
     </asp:GridView>
-    <asp:Button ID="btLuu" runat="server" Text="Lưu" CssClass="btn btn-danger" OnClick="btLuu_Click" />
     <asp:ObjectDataSource ID="ods_KetQua" runat="server" SelectMethod="getByMaMH" TypeName="WebQLDaoTao.Models.KetQuaDAO" >
         <SelectParameters>
             <asp:ControlParameter ControlID="ddlMonHoc" Name="mamh" PropertyName="SelectedValue" Type="String" />

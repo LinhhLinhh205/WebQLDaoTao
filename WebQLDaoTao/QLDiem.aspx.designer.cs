@@ -33,15 +33,6 @@ namespace WebQLDaoTao
         protected global::System.Web.UI.WebControls.GridView gvKetQua;
 
         /// <summary>
-        /// btLuu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btLuu;
-
-        /// <summary>
         /// ods_KetQua control.
         /// </summary>
         /// <remarks>

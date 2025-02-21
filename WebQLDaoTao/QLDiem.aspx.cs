@@ -25,5 +25,30 @@ namespace WebQLDaoTao
                 kqDAO.Update(id, diem);
             }
         }
+
+        protected void btnXoa_Click(object sender, EventArgs e)
+        {
+            int count = gvKetQua.Rows.Count;
+            for (int i = 0; i < count; i++)
+            {
+                bool checkxoa = ((CheckBox)gvKetQua.Rows[i].FindControl("chkChon")).Checked;
+                if (checkxoa)
+                {
+                    int id = int.Parse(gvKetQua.DataKeys[i].Value.ToString());
+                    kqDAO.Delete(id);
+                }
+            }
+            gvKetQua.DataBind();
+        }
+
+        protected void chkAll_CheckedChanged(object sender, EventArgs e)
+        {
+            bool check = ((CheckBox)gvKetQua.FooterRow.FindControl("chkAll")).Checked;
+            int count = gvKetQua.Rows.Count;
+            for (int i = 0; i < count; i++)
+            {
+                ((CheckBox)gvKetQua.Rows[i].FindControl("chkChon")).Checked=check;
+            }
+        }
     }
 }
