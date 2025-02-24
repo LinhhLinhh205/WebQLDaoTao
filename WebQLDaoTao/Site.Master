@@ -12,7 +12,6 @@
         
     </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
-        
     </asp:ContentPlaceHolder>
 </head>
 <body>
@@ -26,7 +25,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">WebDaoTao</a>
+                    <a class="navbar-brand" href="Default.aspx">WebDaoTao</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
@@ -40,7 +39,23 @@
                                 <li><a href="QLSinhVien.aspx">Sinh viên</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Quản lý điểm thi</a></li>
+                        <li><a href="QLDiem.aspx">Quản lý điểm thi</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="liDangNhap" runat="server">
+                            <a href="Login.aspx">
+                                <span >Đăng nhập</span>
+                            </a>
+                        </li>
+                        <li id="liTenDN" runat="server" visible="false" class="navbar-text">                           
+                            <asp:Label ID="lbTen" runat="server" Text=""></asp:Label>
+                        </li>
+
+                        <li id="liDangXuat" runat="server" visible="false">
+                            <a href="Logout.aspx">
+                                <span>Đăng xuất</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

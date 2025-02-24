@@ -11,7 +11,22 @@ namespace WebQLDaoTao
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Session["TaiKhoan"] != null) 
+                {
+                    liDangNhap.Visible = false;  
+                    liDangXuat.Visible = true;   
+                    liTenDN.Visible = true;     
+                    lbTen.Text = Session["TenDN"].ToString();
+                }
+                else
+                {
+                    liDangNhap.Visible = true;
+                    liDangXuat.Visible = false;
+                    liTenDN.Visible = false;
+                }
+            }
         }
     }
 }

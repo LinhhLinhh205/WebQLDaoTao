@@ -8,12 +8,15 @@ using WebQLDaoTao.Models;
 
 namespace WebQLDaoTao
 {
-    public partial class QLSinhVien : System.Web.UI.Page
+    public partial class QLSinhVien : SecurePage
     {
         SinhVienDAO svDao = new SinhVienDAO();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["TaiKhoan"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void btThem_Click(object sender, EventArgs e)

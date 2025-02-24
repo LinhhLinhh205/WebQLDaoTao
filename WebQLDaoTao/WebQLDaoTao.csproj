@@ -85,6 +85,8 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Login.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="QLDiem.aspx" />
     <Content Include="QLKhoa.aspx" />
     <Content Include="QLMonHoc.aspx" />
@@ -95,6 +97,7 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="SecurePage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +111,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\KetQua.cs" />
     <Compile Include="Models\KetQuaDAO.cs" />
     <Compile Include="Models\Khoa.cs" />
@@ -116,6 +133,8 @@
     <Compile Include="Models\MonHocDAO.cs" />
     <Compile Include="Models\SinhVien.cs" />
     <Compile Include="Models\SinhVienDAO.cs" />
+    <Compile Include="Models\TaiKhoan.cs" />
+    <Compile Include="Models\TaiKhoanDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QLDiem.aspx.cs">
       <DependentUpon>QLDiem.aspx</DependentUpon>
@@ -144,6 +163,13 @@
     </Compile>
     <Compile Include="QLSinhVien.aspx.designer.cs">
       <DependentUpon>QLSinhVien.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SecurePage.aspx.cs">
+      <DependentUpon>SecurePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SecurePage.aspx.designer.cs">
+      <DependentUpon>SecurePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

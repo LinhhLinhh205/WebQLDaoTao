@@ -23,7 +23,7 @@ namespace WebQLDaoTao.Models
 				kq.Id = int.Parse(dr["Id"].ToString());
 				kq.MaSV = dr["MaSV"].ToString();
 				kq.MaMH = dr["mamh"].ToString();
-				kq.HoTenSV = dr["hosv"] + "" + dr["tensv"];
+				kq.HoTenSV = dr["hosv"] + " " + dr["tensv"];
 				if (dr["diem"] != DBNull.Value)
 				{
 					kq.Diem = double.Parse(dr["diem"].ToString());

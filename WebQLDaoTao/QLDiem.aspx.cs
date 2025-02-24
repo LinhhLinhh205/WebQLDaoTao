@@ -12,7 +12,11 @@ namespace WebQLDaoTao
 	{
         KetQuaDAO kqDAO = new KetQuaDAO();
         protected void Page_Load(object sender, EventArgs e)
-		{           
+		{
+            if (Session["TaiKhoan"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void btLuu_Click(object sender, EventArgs e)
