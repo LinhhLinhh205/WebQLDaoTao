@@ -17,8 +17,8 @@ namespace WebQLDaoTao
 
         protected void btLogin_Click(object sender, EventArgs e)
         {
-            string tenDN = txtTenDN.Text.Trim();
-            string matKhau = txtMatKhau.Text.Trim();
+            string tenDN = txtTenDN.Text;
+            string matKhau = txtMatKhau.Text;
 
             TaiKhoanDAO tkDAO = new TaiKhoanDAO();
             TaiKhoan tk = tkDAO.KiemTra(tenDN, matKhau);
@@ -27,7 +27,12 @@ namespace WebQLDaoTao
             {
                 Session["TaiKhoan"] = tk;
                 Session["TenDN"] = tk.TenDN;
-                Response.Redirect("Default.aspx"); // Chuyển hướng sau khi đăng nhập thành công
+                Session["ChucVu"] = tk.ChucVu.Trim();
+                Response.Redirect("Default.aspx");
+            }
+            else
+            {
+                lbThongBao.Text = "Đăng nhập thất bại do sai tên mật khẩu";
             }
 
         }

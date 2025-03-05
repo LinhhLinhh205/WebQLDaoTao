@@ -13,10 +13,7 @@ namespace WebQLDaoTao
         KhoaDAO khDAO = new KhoaDAO();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["TaiKhoan"] == null)
-            {
-                Response.Redirect("Login.aspx");
-            }
+            base.Page_Load(sender, e);
         }
 
         protected void btThem_Click(object sender, EventArgs e)

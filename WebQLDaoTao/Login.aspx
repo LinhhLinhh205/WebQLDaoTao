@@ -19,8 +19,9 @@
                 <asp:TextBox ID="txtMatKhau" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
             </div>
             <asp:Button ID="btLogin" runat="server" Text="Đăng nhập" OnClick="btLogin_Click" />
-
+            <asp:Label ID="lbThongBao" runat="server" Text="" CssClass="text-danger"></asp:Label>
         </div>
     </form>
 </body>
 </html>
+

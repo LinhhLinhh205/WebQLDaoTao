@@ -98,6 +98,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="SecurePage.aspx" />
+    <Content Include="TuChoi.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +178,13 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="TuChoi.aspx.cs">
+      <DependentUpon>TuChoi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TuChoi.aspx.designer.cs">
+      <DependentUpon>TuChoi.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -8,15 +8,12 @@ using WebQLDaoTao.Models;
 
 namespace WebQLDaoTao
 {
-	public partial class QLDiem : System.Web.UI.Page
+	public partial class QLDiem : SecurePage
 	{
         KetQuaDAO kqDAO = new KetQuaDAO();
         protected void Page_Load(object sender, EventArgs e)
 		{
-            if (Session["TaiKhoan"] == null)
-            {
-                Response.Redirect("Login.aspx");
-            }
+            base.Page_Load(sender, e);
         }
 
         protected void btLuu_Click(object sender, EventArgs e)

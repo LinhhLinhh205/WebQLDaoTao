@@ -55,6 +55,27 @@ namespace WebQLDaoTao.Models
 
             return tk;
         }
+        public TaiKhoan FindByUserName(string username)
+        {
+            TaiKhoan kq = null;
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["WebQLDaoTao_ConStr"].ConnectionString);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM TaiKhoan WHERE TenDN = @TenDN", conn);
+            cmd.Parameters.AddWithValue("@TenDN", username);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                kq = new TaiKhoan
+                {
+                    TenDN = dr["TenDN"].ToString(),
+                    MatKhau = dr["MatKhau"].ToString(),
+                    ChucVu = dr["ChucVu"].ToString()
+                };
+            }
+            return kq;
+        }
 
 
     }
