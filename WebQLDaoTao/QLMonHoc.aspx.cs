@@ -8,14 +8,14 @@ using WebQLDaoTao.Models;
 
 namespace WebQLDaoTao
 {
-    public partial class QLMonHoc : System.Web.UI.Page
+    public partial class QLMonHoc : SecurePage
     {
         MonHocDAO mhDAO = new MonHocDAO();
         protected void Page_Load(object sender, EventArgs e)
         {
+            base.Page_Load(sender, e);
             if (!Page.IsPostBack)
             {
-                //lien ket du lieu cho gvMonhoc
                 gvMonhoc.DataSource = mhDAO.getAll();
                 gvMonhoc.DataBind();
             }
@@ -26,11 +26,8 @@ namespace WebQLDaoTao
             string mamh = gvMonhoc.DataKeys[e.RowIndex].Value.ToString();
             string tenmh = ((TextBox)gvMonhoc.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
             int sotiet = int.Parse(((TextBox)gvMonhoc.Rows[e.RowIndex].Cells[2].Controls[0]).Text);
-            //b2. cap nhat vao CSDL
             mhDAO.Update(mamh, tenmh, sotiet);
-            //b3. chuyen doi trang thai cua dong hien hanh : từ chế độ sửa(edit) sang chế độ xem
             gvMonhoc.EditIndex = -1;
-            //b4. lien ket lai du lieu cho gvMonHoc
             gvMonhoc.DataSource = mhDAO.getAll();
             gvMonhoc.DataBind();
         }
@@ -38,7 +35,6 @@ namespace WebQLDaoTao
         protected void gvMonhoc_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvMonhoc.EditIndex = -1;
-            //lien ket lai du lieu cho gvMonHoc
             gvMonhoc.DataSource = mhDAO.getAll();
             gvMonhoc.DataBind();
 
@@ -48,11 +44,8 @@ namespace WebQLDaoTao
         {
             try
             {
-                //b1. lấy thông tin mã môn học hiện hành
                 string mamh = gvMonhoc.DataKeys[e.RowIndex].Value.ToString();
-                //b2. goi phương thức xóa môn học khỏi CSDL của lớp MonHocDAO
                 mhDAO.Delete(mamh);
-                //b4. lien ket lai du lieu cho gvMonHoc
                 gvMonhoc.DataSource = mhDAO.getAll();
                 gvMonhoc.DataBind();
             }
@@ -65,7 +58,6 @@ namespace WebQLDaoTao
         protected void gvMonhoc_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvMonhoc.PageIndex = e.NewPageIndex;
-            //lien ket lai du lieu cho gvMonHoc
             gvMonhoc.DataSource = mhDAO.getAll();
             gvMonhoc.DataBind();
         }
@@ -89,7 +81,6 @@ namespace WebQLDaoTao
             {
                 Response.Write("<script>alert('Thao tác thêm môn học không thành công.')</script>");
             }
-            //liên kết dữ liệu cho gvMonHoc
             gvMonhoc.DataSource = mhDAO.getAll();
             gvMonhoc.DataBind();
         }
@@ -102,7 +93,6 @@ namespace WebQLDaoTao
         protected void gvMonhoc_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvMonhoc.EditIndex = e.NewEditIndex;
-            //lien ket lai du lieu cho gvMonHoc
             gvMonhoc.DataSource = mhDAO.getAll();
             gvMonhoc.DataBind();
         }
