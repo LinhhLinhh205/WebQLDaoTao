@@ -21,7 +21,65 @@
             <asp:Button ID="btLogin" runat="server" Text="Đăng nhập" OnClick="btLogin_Click" />
             <asp:Label ID="lbThongBao" runat="server" Text="" CssClass="text-danger"></asp:Label>
         </div>
+        u:admin pass:admin123
     </form>
+    <style>
+    .container {
+        max-width: 400px;
+        margin-top: 50px;
+        padding: 30px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group label {
+        font-weight: bold;
+        font-size: 14px;
+        color: #555;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        font-size: 14px;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .form-control:focus {
+        border-color: #4caf50;
+        box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .btn-primary {
+        background-color: #4caf50;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #45a049;
+        cursor: pointer;
+    }
+
+    .text-danger {
+        font-size: 14px;
+        color: #f44336;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+</style>
 </body>
 </html>
 
